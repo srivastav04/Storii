@@ -1,0 +1,38 @@
+.landing {
+  width: 100%;
+  height: 100vh;
+  background: #d8d8d8;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: center;
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+    max-width: 800px;
+
+    .cta {
+      margin-top: 1.5rem;
+      background-color: #ffffff;
+      color: #111;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #eaeaea;
+      }
+    }
+  }
+}
