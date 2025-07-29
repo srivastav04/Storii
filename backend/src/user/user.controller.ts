@@ -88,7 +88,6 @@ export class UserController {
   @Get('/check-auth/:userId')
   async checkAuth(@Param('userId') userId: string) {
     const user = await this.prisma.user.findFirst({ where: { userId } });
-    console.log(user);
 
     if (user) return user;
     return false;
@@ -97,8 +96,6 @@ export class UserController {
   @Post('/editProfile')
   async editProfile(@Body() body: any) {
     try {
-      console.log('body:', body);
-
       const updatedLikes = await this.prisma.like.updateMany({
         where: { userId: body.userId },
         data: {
@@ -138,8 +135,6 @@ export class UserController {
     }
 
     try {
-      console.log('query:', query);
-
       const users = await this.prisma.user.findMany({
         where: {
           OR: [
@@ -160,8 +155,6 @@ export class UserController {
         },
         take: 10,
       });
-
-      console.log('users:', users);
 
       return { users };
     } catch (error) {

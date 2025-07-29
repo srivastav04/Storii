@@ -24,10 +24,6 @@ export class PostController {
         body.mediaType === 'video'
           ? `${body.mediaUrl}?tr=w-480,vc=h264`
           : `${body.mediaUrl}?tr=w-500,h-500,c-maintain_ratio,f-auto,q-80`;
-      console.log('userId:', body.userId);
-      console.log('transformedUrl:', transformedUrl);
-      console.log('bio:', body.bio);
-      console.log('mediaType:', body.mediaType);
 
       const newPost = await this.prisma.post.create({
         data: {
@@ -115,8 +111,6 @@ export class PostController {
   @Get('/getUserPosts/:userId')
   async getUserPosts(@Param('userId') userId: string) {
     try {
-      console.log(userId);
-
       const user = await this.prisma.user.findUnique({
         where: { userId: userId },
         select: {
@@ -126,8 +120,6 @@ export class PostController {
           bio: true,
         },
       });
-
-      console.log('user', user);
 
       if (!user) {
         return { status: false, message: 'User not found' };
@@ -165,8 +157,6 @@ export class PostController {
           },
         },
       });
-
-      console.log('user', user);
 
       return {
         user: user,
@@ -213,7 +203,6 @@ export class PostController {
           },
         },
       });
-      console.log(post);
 
       return post;
     } catch (error) {
@@ -226,7 +215,6 @@ export class PostController {
   @Post('like')
   async likePost(@Body() body: any) {
     const { userId, userName, avatar, postId, fullName } = body;
-    console.log(userId, userName, avatar, postId, fullName, fullName, 'asd');
 
     try {
       // Check if user has already liked the post
@@ -261,8 +249,6 @@ export class PostController {
           },
         });
 
-        console.log(newLike);
-
         return {
           message: 'Like added successfully',
           liked: true,
@@ -281,7 +267,6 @@ export class PostController {
       const post = await this.prisma.post.findUnique({
         where: { id: postId },
       });
-      console.log(post);
 
       return post;
     } catch (error) {
@@ -305,7 +290,6 @@ export class PostController {
           mediaType: body.mediaType,
         },
       });
-      console.log(updatedPost);
 
       return {
         message: 'Post updated successfully',
@@ -385,7 +369,7 @@ export class PostController {
           fullName: true,
         },
       });
-      console.log(posts);
+
       return { posts, users };
     } catch (error) {
       console.error(error);
