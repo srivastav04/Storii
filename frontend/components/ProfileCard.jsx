@@ -7,6 +7,8 @@ import { useUserStore } from "@/app/store";
 
 export default function ProfileCard({ user, posts, userId = "" }) {
 
+
+
   const { currentUserId, isAdmin } = useUserStore();
   return (
     <div className=" mx-auto bg-zinc-300 shadow-xl overflow-hidden flex flex-col lg:flex-row items-center p-8">
@@ -18,7 +20,7 @@ export default function ProfileCard({ user, posts, userId = "" }) {
           className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full object-cover border-2 border-indigo-600"
         />
         {
-          (currentUserId === userId || isAdmin) && (
+          (currentUserId === user?.userId || isAdmin) && (
             <Link href={`/editProfile`}>
               <div className="absolute bottom-0 right-4 bg-indigo-600 text-white rounded-full p-2 cursor-pointer hover:bg-indigo-700 transition-colors">
 
