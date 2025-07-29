@@ -6,6 +6,7 @@ import EditPostForm from "@/components/EditPostForm";
 import { fetchPost } from "@/app/apiFunctions";
 import { PostFormLoadingState } from "@/components/LoadingStates";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import SignInPage from "@/components/SignInPage";
 
 
 export default function EditPost() {
