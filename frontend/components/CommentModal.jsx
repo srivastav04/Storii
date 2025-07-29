@@ -20,14 +20,14 @@ export default function MobileCommentModal({ comments, postId, userName, avatar,
     const { mutate, isPending } = useMutation({
         mutationFn: addComment,
         onSuccess: (data) => {
-            console.log(data);
+
         },
         onError: (error) => {
-            console.log(error);
+            console.error(error);
         }
     })
 
-    console.log(postComments);
+
 
     const handleSend = () => {
         if (!draft.trim()) return;
@@ -140,3 +140,4 @@ export default function MobileCommentModal({ comments, postId, userName, avatar,
         </>
     );
 }
+

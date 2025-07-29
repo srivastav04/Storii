@@ -1,5 +1,6 @@
 "use client";
 import SearchBar from "@/components/SearchBar";
+import SignInPage from "@/components/SignInPage";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function Test() {
@@ -9,7 +10,7 @@ export default function Test() {
         <SearchBar />
       </SignedIn>
       <SignedOut>
-        <h1>Not signed in</h1>
+        <SignInPage />
       </SignedOut>
     </>
   );

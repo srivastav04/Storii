@@ -20,7 +20,6 @@ export default function AppNavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
   const { isAdmin } = useUserStore();
-  console.log(isAdmin);
 
   const menuItems = [
     "Profile",

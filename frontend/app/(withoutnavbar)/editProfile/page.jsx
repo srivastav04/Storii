@@ -1,5 +1,6 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import EditProfileForm from "../../../components/EditProfileForm";
+import SignInPage from "@/components/SignInPage";
 
 
 export default function EditProfile() {
@@ -10,9 +11,7 @@ export default function EditProfile() {
                     <EditProfileForm />
                 </div>
             </SignedIn>
-            <SignedOut>
-                <h1>Not signed in</h1>
-            </SignedOut>
+            <SignedOut><SignInPage /></SignedOut>
         </>
     );
 }

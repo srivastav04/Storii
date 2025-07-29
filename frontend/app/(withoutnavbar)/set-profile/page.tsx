@@ -1,4 +1,5 @@
 import SetProfileForm from "@/components/SetProfileForm";
+import SignInPage from "@/components/SignInPage";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function SetProfile() {
@@ -10,7 +11,7 @@ export default function SetProfile() {
         </div>
       </SignedIn>
       <SignedOut>
-        <h1>Not signed in</h1>
+        <SignInPage />
       </SignedOut>
     </>
   );

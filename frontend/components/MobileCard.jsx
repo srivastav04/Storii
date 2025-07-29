@@ -77,3 +77,5 @@ export default function PostCard({ mediaType = 'image' }) {
         </>
     );
 }
+
+

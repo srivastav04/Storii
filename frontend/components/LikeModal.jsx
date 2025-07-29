@@ -19,7 +19,6 @@ export default function LikeModal({ likedUsers }) {
         setSize(size);
         onOpen();
     };
-    console.log("likedUsers", likedUsers);
 
     return (
         <>
@@ -65,3 +64,4 @@ export default function LikeModal({ likedUsers }) {
         </>
     )
 }
+

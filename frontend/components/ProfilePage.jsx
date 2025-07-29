@@ -25,7 +25,7 @@ export default function ProfilePage() {
         queryFn: () => getUserPosts(params.id),
         enabled: !!userId
     });
-    console.log(params.id, data);
+
 
     if (isLoading || !data) return <ProfileLoadingState />
     if (data.status === false) return <UserNotFound />

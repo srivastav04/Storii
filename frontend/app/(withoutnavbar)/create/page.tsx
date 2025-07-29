@@ -1,4 +1,5 @@
 import CreatePostForm from "@/components/CreatePostForm";
+import SignInPage from "@/components/SignInPage";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function CreatePost() {
@@ -8,7 +9,7 @@ export default function CreatePost() {
         <CreatePostForm />;
       </SignedIn>
       <SignedOut>
-        <h1>Not signed in</h1>
+        <SignInPage />
       </SignedOut>
     </>
   );

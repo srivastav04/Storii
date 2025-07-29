@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 import { LoadingCard } from '@/components/LoadingStates';
 import PostCard from '@/components/PostCard';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
+import SignInPage from '@/components/SignInPage';
 
 export default function Post() {
     const params = useParams();
@@ -40,9 +41,7 @@ export default function Post() {
 
                 </div>
             </SignedIn>
-            <SignedOut>
-                <h1>Not signed in</h1>
-            </SignedOut>
+            <SignedOut><SignInPage /></SignedOut>
         </>
     );
 

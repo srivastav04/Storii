@@ -11,7 +11,7 @@ import { editProfile, uploadToImageKit } from "@/app/apiFunctions";
 import { SetProfileFomLoadingState } from "./LoadingStates";
 import { FaEdit } from "react-icons/fa";
 export default function SetProfileForm() {
-    console.log("hello");
+
 
     const setUser = useUserStore((state) => state.setUser);
     const { userName: currentUserName, bio: currentBio, avatar: currentAvatar, currentUserId } = useUserStore();
@@ -33,7 +33,7 @@ export default function SetProfileForm() {
     const { isPending, mutate } = useMutation({
         mutationFn: editProfile,
         onSuccess: (data) => {
-            console.log(data);
+
             setUser({
                 userName: data.userName,
                 bio: data.bio,
@@ -49,7 +49,7 @@ export default function SetProfileForm() {
                     setErrors((error).message.errors);
                     break;
                 case 403:
-                    console.log("in 403");
+
                     alert(error.message);
                     return
                 default:
@@ -186,3 +186,4 @@ export default function SetProfileForm() {
         </div>
     );
 }
+

@@ -27,9 +27,7 @@ export default function EditPost() {
                     {data && <EditPostForm post={data} />}
                 </div>
             </SignedIn>
-            <SignedOut>
-                <h1>Not signed in</h1>
-            </SignedOut>
+            <SignedOut><SignInPage /></SignedOut>
         </>
     );
 }

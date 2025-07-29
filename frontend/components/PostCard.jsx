@@ -22,8 +22,6 @@ export default function PostCard({ mediaUrl, mediaType, bio, user, userId, id, c
     const userName = user.userName;
     const avatar = user.avatar;
     const { userName: currentUser, avatar: currentAvatar, currentUserId, fullName } = useUserStore();
-    console.log("PostCard", currentUser, currentAvatar, currentUserId, fullName);
-
     const [likedUsers, setLikedUsers] = useState(likes || []);
     const [isLiked, setIsLiked] = useState(false);
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -119,3 +117,7 @@ export default function PostCard({ mediaUrl, mediaType, bio, user, userId, id, c
         </>
     );
 }
+
+
+
+

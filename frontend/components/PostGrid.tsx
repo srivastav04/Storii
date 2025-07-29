@@ -14,14 +14,6 @@ export default function PostGrid() {
     currentUserId,
     isAdmin,
   } = useUserStore();
-  console.log(
-    "In post Grid",
-    currentUserId,
-    currentUserName,
-    currentAvatar,
-    currentBio,
-    isAdmin
-  );
 
   const { data, isLoading } = useQuery({
     queryKey: ["posts"],

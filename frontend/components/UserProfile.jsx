@@ -21,7 +21,7 @@ export default function Profile() {
         queryFn: () => getUserPosts(currentUserId),
         enabled: !!currentUserId,
     });
-    console.log(data);
+
     if (isLoading || !data) return <ProfileLoadingState />
 
 
@@ -94,3 +94,4 @@ export default function Profile() {
         </div>
     );
 }
+

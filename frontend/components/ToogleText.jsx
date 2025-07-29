@@ -24,7 +24,7 @@ export function ToogleText({ bio }) {
         <>
             <p
                 ref={ref}
-                className={`text-sm sm:text-base font-roboto text-gray-800 leading-tight ${!expanded ? "overflow-hidden" : ""
+                className={`text-medium font-roboto text-gray-800 leading-tight ${!expanded ? "overflow-hidden" : ""
                     }`}
                 style={
                     !expanded

@@ -38,11 +38,7 @@ export default function ProfileCard({ user, posts, userId = "" }) {
         <div className="mt-4 flex space-x-8">
           <div className="flex flex-col">
             <span className="text-xl font-semibold text-gray-800">{posts}</span>
-            <span className="text-sm uppercase text-gray-500">Posts</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-semibold text-gray-800">{user?.likes || 0}</span>
-            <span className="text-sm uppercase text-gray-500">Likes</span>
+            <span className="text-sm uppercase text-gray-500">{posts === 1 ? "Post" : "Posts"}</span>
           </div>
         </div>
 
@@ -54,3 +50,4 @@ export default function ProfileCard({ user, posts, userId = "" }) {
     </div>
   );
 }
+

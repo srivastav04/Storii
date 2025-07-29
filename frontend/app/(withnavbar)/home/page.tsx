@@ -1,4 +1,5 @@
 import PostGrid from "@/components/PostGrid";
+import SignInPage from "@/components/SignInPage";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
         </div>
       </SignedIn>
       <SignedOut>
-        <h1>Not signed in</h1>
+        <SignInPage />
       </SignedOut>
     </>
   );

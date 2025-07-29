@@ -37,10 +37,10 @@ export default function Create() {
     const { mutate, isPending } = useMutation({
         mutationFn: createPost,
         onSuccess: (data) => {
-            console.log(data);
 
-            queryClient.invalidateQueries(["posts"]);
-            setIsLoading(false);
+
+            queryClient.invalidateQueries(["posts", "user-posts", "adminposts"]);
+
             setTimeout(() => {
                 router.push("/home");
             }, 1500);
@@ -121,9 +121,8 @@ export default function Create() {
             try {
                 url = await uploadToImageKit(media);
                 formData.append("mediaUrl", url);
-                console.log(url);
+
             } catch (error) {
-                console.log(error);
                 alert(error);
                 setIsLoading(false);
                 return;
@@ -135,7 +134,7 @@ export default function Create() {
             mediaUrl: url,
             mediaType: userInfo.mediaType,
         };
-        console.log(url);
+
 
         mutate(data);
     };
@@ -241,3 +240,5 @@ export default function Create() {
         </div>
     );
 }
+
+

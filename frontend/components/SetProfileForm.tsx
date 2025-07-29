@@ -19,7 +19,6 @@ export default function SetProfileForm() {
   const { isPending, mutate } = useMutation({
     mutationFn: setProfile,
     onSuccess: (data) => {
-      console.log(data);
       setUser({
         userName: data.message.userName,
         fullName: data.message.fullName,

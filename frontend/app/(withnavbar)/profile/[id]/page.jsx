@@ -1,5 +1,6 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import ProfilePage from "@/components/ProfilePage";
+import SignInPage from "@/components/SignInPage";
 
 
 export default function Page() {
@@ -8,9 +9,7 @@ export default function Page() {
             <SignedIn>
                 <ProfilePage />
             </SignedIn>
-            <SignedOut>
-                <h1>Not signed in</h1>
-            </SignedOut>
+            <SignedOut><SignInPage /></SignedOut>
         </>
     )
 }

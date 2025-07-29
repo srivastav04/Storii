@@ -27,17 +27,17 @@ export default function EditPostForm({ post }) {
     const [previewUrl, setPreviewUrl] = useState(originalMediaUrl);
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
-    console.log(media);
+
 
 
     const { mutate, isPending } = useMutation({
         mutationFn: updatePost,
         onSuccess: (data) => {
-            queryClient.invalidateQueries(["posts"]);
+            queryClient.invalidateQueries(["posts", "user-posts", "adminposts"]);
             setTimeout(() => {
                 router.replace("/userprofile");
             }, 1500);
-            console.log(data);
+
         },
         onError: (error) => {
             setIsLoading(false);
@@ -93,9 +93,9 @@ export default function EditPostForm({ post }) {
             try {
                 url = await uploadToImageKit(media);
                 formData.append("mediaUrl", url);
-                console.log(url);
+
             } catch (error) {
-                console.log(error);
+
                 alert(error);
                 setIsLoading(false)
                 return;
@@ -212,3 +212,4 @@ export default function EditPostForm({ post }) {
     );
 
 };
+

@@ -15,7 +15,6 @@ export const PublicCardHeader = ({ userName, avatar, userId }) => {
 }
 
 export const PrivateCardHeader = ({ userName, avatar, userId, postId }) => {
-    console.log("in Card Header private:", userName, avatar, postId);
 
     const queryClient = useQueryClient();
     const { mutate, isLoading } = useMutation({
@@ -35,7 +34,7 @@ export const PrivateCardHeader = ({ userName, avatar, userId, postId }) => {
                 <Avatar src={avatar} />
                 <Link
                     href={`/profile/${userId}`}
-                    className="ml-2 text-sm sm:text-base text-gray-800 font-bold"
+                    className="ml-2 text-medium text-gray-800 font-bold"
                 >
                     {userName}
                 </Link>
@@ -55,3 +54,5 @@ export const PrivateCardHeader = ({ userName, avatar, userId, postId }) => {
         </CardHeader>
     );
 };
+
+
