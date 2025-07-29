@@ -41,7 +41,7 @@ export default function SetProfileForm() {
                 currentUserId: data.userId,
             });
             setIsLoading(false);
-            router.push("/userprofile");
+            router.replace("/userprofile");
         },
         onError: (error) => {
             switch ((error).status) {
