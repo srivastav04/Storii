@@ -114,6 +114,7 @@ export class PostController {
       const user = await this.prisma.user.findUnique({
         where: { userId: userId },
         select: {
+          userId: true,
           userName: true,
           avatar: true,
           fullName: true,
