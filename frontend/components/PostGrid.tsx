@@ -15,6 +15,7 @@ export default function PostGrid() {
     isAdmin,
   } = useUserStore();
   console.log(
+    "In post Grid",
     currentUserId,
     currentUserName,
     currentAvatar,

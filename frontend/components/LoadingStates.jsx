@@ -124,3 +124,37 @@ export const PostFormLoadingState = () => {
         </div>
     );
 }
+
+export const AdminLoadingState = () => {
+    return (
+        <main className="min-h-screen bg-zinc-100 p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full justify-center">
+                {/* Users Card */}
+
+                <Skeleton className="rounded-lg">
+                    <div className="h-30 rounded-lg bg-default-900" />
+                </Skeleton>
+
+                {/* Posts Card */}
+                <Skeleton className="rounded-lg">
+                    <div className="h-30 rounded-lg bg-default-300" />
+                </Skeleton>
+            </div>
+            <div>
+                <div className=" bg-zinc-100 flex pt-6">
+                    <div className="w-full max-w-md bg-white rounded-xl shadow p-4">
+                        <Skeleton className="w-4/5 rounded-lg mb-2">
+                            <div className="h-5 w-4/5 rounded-lg bg-default-200" />
+                        </Skeleton>
+
+                        {/* Scrollable area */}
+                        <Skeleton className="rounded-lg">
+                            <div className="h-60 rounded-lg bg-default-300" />
+                        </Skeleton>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    )
+}

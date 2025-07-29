@@ -1,23 +1,20 @@
 import axios from "axios";
 
+const BASEURL = process.env.NEXT_PUBLIC_URL;
+console.log(BASEURL);
+
 export const checkUser = async (userId: string): Promise<any> => {
-  const res = await axios.get(
-    `http://localhost:3001/user/check-auth/${userId}`
-  );
+  const res = await axios.get(`${BASEURL}/user/check-auth/${userId}`);
   return res.data;
 };
 
 export const setProfile = async (formData: FormData): Promise<any> => {
   try {
-    const res = await axios.post(
-      "http://localhost:3001/user/setProfile",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const res = await axios.post(`${BASEURL}/user/setProfile`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     return res.data;
   } catch (err: any) {
@@ -36,7 +33,7 @@ export const createPost = async (data: {
   [key: string]: string;
 }): Promise<any> => {
   try {
-    const res = await axios.post("http://localhost:3001/post/create", data, {
+    const res = await axios.post(`${BASEURL}/post/create`, data, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -76,7 +73,7 @@ export const uploadToImageKit = async (file: File) => {
 };
 
 export const getPosts = async () => {
-  const res = await axios.get("http://localhost:3001/post/getPosts");
+  const res = await axios.get(`${BASEURL}/post/getPosts`);
   console.log(res.data);
   return res.data;
 };
@@ -84,7 +81,7 @@ export const getPosts = async () => {
 export const addComment = async (data: any) => {
   console.log(data);
 
-  const res = await axios.post("http://localhost:3001/post/addComment", data, {
+  const res = await axios.post(`${BASEURL}/post/addComment`, data, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -95,15 +92,13 @@ export const addComment = async (data: any) => {
 };
 
 export const getUserPosts = async (userId: string) => {
-  const res = await axios.get(
-    `http://localhost:3001/post/getUserPosts/${userId}`
-  );
+  const res = await axios.get(`${BASEURL}/post/getUserPosts/${userId}`);
   console.log(res.data);
   return res.data;
 };
 
 export const getPost = async (postId: string) => {
-  const res = await axios.get(`http://localhost:3001/post/getPost/${postId}`);
+  const res = await axios.get(`${BASEURL}/post/getPost/${postId}`);
   console.log(res.data);
   return res.data;
 };
@@ -115,10 +110,18 @@ export const likePost = async (
   avatar: string,
   fullName: string
 ) => {
-  console.log(postId, userId, userName, avatar);
+  console.log(
+    "in apiFunctions likePost",
+    postId,
+    userId,
+    userName,
+    avatar,
+    fullName
+  );
+  console.log("fullName", fullName);
 
   const res = await axios.post(
-    "http://localhost:3001/post/likePost",
+    `${BASEURL}/post/likePost`,
     { postId, userId, userName, avatar, fullName },
     { headers: { "Content-Type": "application/json" } }
   );
@@ -127,14 +130,14 @@ export const likePost = async (
 };
 
 export const fetchPost = async (postId: string) => {
-  const res = await axios.get(`http://localhost:3001/post/fetchPost/${postId}`);
+  const res = await axios.get(`${BASEURL}/post/fetchPost/${postId}`);
   console.log(res.data);
   return res.data;
 };
 
 export const updatePost = async (data: any) => {
   console.log(data);
-  const res = await axios.post("http://localhost:3001/post/updatePost", data, {
+  const res = await axios.post(`${BASEURL}/post/updatePost`, data, {
     headers: { "Content-Type": "application/json" },
   });
   console.log(res.data);
@@ -142,9 +145,7 @@ export const updatePost = async (data: any) => {
 };
 
 export const deletePost = async (postId: string) => {
-  const res = await axios.delete(
-    `http://localhost:3001/post/deletePost/${postId}`
-  );
+  const res = await axios.delete(`${BASEURL}/post/deletePost/${postId}`);
   console.log(res.data);
   return res.data;
 };
@@ -153,15 +154,11 @@ export const editProfile = async (data: { [key: string]: string }) => {
   console.log(data);
 
   try {
-    const res = await axios.post(
-      "http://localhost:3001/user/editProfile",
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await axios.post(`${BASEURL}/user/editProfile`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     return res.data;
   } catch (err: any) {
@@ -177,7 +174,7 @@ export const editProfile = async (data: { [key: string]: string }) => {
 };
 
 export const searchUsers = async (query: string) => {
-  const res = await axios.get("http://localhost:3001/user/search", {
+  const res = await axios.get(`${BASEURL}/user/search`, {
     params: { query },
   });
 
@@ -185,7 +182,15 @@ export const searchUsers = async (query: string) => {
 };
 
 export const getAllData = async () => {
-  const res = await axios.get("http://localhost:3001/post/getAllPosts");
+  const res = await axios.get(`${BASEURL}/post/getAllPosts`);
+  console.log(res.data);
+  return res.data;
+};
+
+export const deleteUser = async (userId: string) => {
+  console.log(userId);
+
+  const res = await axios.delete(`${BASEURL}/user/deleteUser/${userId}`);
   console.log(res.data);
   return res.data;
 };

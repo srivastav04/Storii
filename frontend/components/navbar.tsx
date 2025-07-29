@@ -68,7 +68,7 @@ export default function AppNavBar() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <p className="font-bold text-3xl">Storii</p>
+          <p className="font-playfair text-2xl font-bold">Storii</p>
         </NavbarBrand>
       </NavbarContent>
 

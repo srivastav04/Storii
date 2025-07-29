@@ -42,3 +42,19 @@ export const NoPostsState = ({ heading = "No posts yet.", message = "", action =
         </div>
     );
 }
+
+
+export const UserNotFound = () => {
+    return (
+        <div className='h-screen w-full flex items-center justify-center'>
+            <div className="w-full flex flex-col items-center justify-center p-8 bg-zinc-300 rounded-2xl shadow-md max-w-md mx-auto">
+                {/* Empty-state icon (Heroicons-inspired) */}
+
+
+                <p className="mt-2 text-center text-gray-900 font-bold">
+                    User not found
+                </p>
+            </div>
+        </div>
+    )
+}

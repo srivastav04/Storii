@@ -14,6 +14,10 @@ const config = {
         mono: ["var(--font-mono)"],
       },
     },
+    fontFamily: {
+      playfair: ["var(--font-playfair)"],
+      roboto: ["var(--font-roboto)"],
+    },
   },
   darkMode: "class",
   plugins: [heroui()],

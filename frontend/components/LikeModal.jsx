@@ -19,6 +19,7 @@ export default function LikeModal({ likedUsers }) {
         setSize(size);
         onOpen();
     };
+    console.log("likedUsers", likedUsers);
 
     return (
         <>
@@ -43,7 +44,7 @@ export default function LikeModal({ likedUsers }) {
                                                 avatarProps={{
                                                     src: like.avatar,
                                                 }}
-                                                description={like.fullName}
+                                                description={`@${like.fullName}`}
                                                 name={like.username}
                                             />
                                         </Link>
