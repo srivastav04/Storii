@@ -46,7 +46,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx(playfair.variable, roboto.variable)}>
-      <head />
+      <head>
+        <script
+          src="https://app.rybbit.io/api/script.js"
+          data-site-id="1913"
+          defer
+        ></script>
+      </head>
       <body
         className={clsx(
           "min-h-screen text-foreground bg-background font-sans antialiased",
