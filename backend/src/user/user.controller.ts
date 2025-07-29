@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Body,
   Controller,
+  Delete,
   ForbiddenException,
   Get,
   InternalServerErrorException,
@@ -23,19 +24,6 @@ export class UserController {
     private readonly imagekitService: ImagekitService,
     private readonly prisma: PrismaService,
   ) {}
-
-  // @Get('/:id')
-  // async getUser(@Param('id') userId: string) {
-  //   const user = await this.clerkService.getUser(userId);
-
-  //   return {
-  //     id: user.id,
-  //     email: user.emailAddresses[0]?.emailAddress,
-  //     fullName: `${user.firstName ?? ''} ${user.lastName ?? ''}`.trim(),
-  //     username: user.username,
-  //     createdAt: user.createdAt,
-  //   };
-  // }
 
   @Post('/setProfile')
   @UseInterceptors(FileInterceptor('avatar'))
@@ -84,7 +72,12 @@ export class UserController {
       }
 
       return {
-        message: { userName: body.userName, avatar: imageUrl, bio: body.bio },
+        message: {
+          userName: body.userName,
+          avatar: imageUrl,
+          bio: body.bio,
+          fullName: body.fullName,
+        },
       };
     } catch (err) {
       console.error('Error in setProfile:', err);
@@ -174,6 +167,40 @@ export class UserController {
     } catch (error) {
       console.error('User search error:', error);
       throw new InternalServerErrorException('Server error');
+    }
+  }
+
+  @Delete('/deleteUser/:userId')
+  async deleteUser(@Param('userId') userId: string) {
+    try {
+      // Step 1: Get all posts created by the user
+      const userPosts = await this.prisma.post.findMany({
+        where: { userId },
+        select: { id: true },
+      });
+
+      const postIds = userPosts.map((post) => post.id);
+
+      // Step 2: Delete all likes and comments on user's posts
+      await this.prisma.like.deleteMany({ where: { postId: { in: postIds } } });
+      await this.prisma.comment.deleteMany({
+        where: { postId: { in: postIds } },
+      });
+
+      // Step 3: Delete user's likes and comments on others' posts
+      await this.prisma.like.deleteMany({ where: { userId } });
+      await this.prisma.comment.deleteMany({ where: { userId } });
+
+      // Step 4: Delete user's posts
+      await this.prisma.post.deleteMany({ where: { userId } });
+
+      // Step 5: Delete the user
+      await this.prisma.user.delete({ where: { userId } });
+
+      return { message: 'User deleted successfully' };
+    } catch (error) {
+      console.error(error);
+      throw new BadRequestException('Failed to delete user');
     }
   }
 }

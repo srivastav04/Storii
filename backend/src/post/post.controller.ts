@@ -117,6 +117,22 @@ export class PostController {
     try {
       console.log(userId);
 
+      const user = await this.prisma.user.findUnique({
+        where: { userId: userId },
+        select: {
+          userName: true,
+          avatar: true,
+          fullName: true,
+          bio: true,
+        },
+      });
+
+      console.log('user', user);
+
+      if (!user) {
+        return { status: false, message: 'User not found' };
+      }
+
       const posts = await this.prisma.post.findMany({
         where: { userId: userId },
         orderBy: { createdAt: 'desc' },
@@ -150,21 +166,11 @@ export class PostController {
         },
       });
 
-      const user = await this.prisma.user.findUnique({
-        where: { userId: userId },
-        select: {
-          userName: true,
-          avatar: true,
-          fullName: true,
-          bio: true,
-        },
-      });
-
       console.log('user', user);
 
       return {
-        posts: posts,
         user: user,
+        posts: posts,
       };
     } catch (error) {
       console.error(error);
@@ -220,6 +226,7 @@ export class PostController {
   @Post('like')
   async likePost(@Body() body: any) {
     const { userId, userName, avatar, postId, fullName } = body;
+    console.log(userId, userName, avatar, postId, fullName, fullName, 'asd');
 
     try {
       // Check if user has already liked the post
